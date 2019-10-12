@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  description: API for adidas-subscription-api
+  version: "1.0.0-oas3"
+  title: Subscription API 
+tags:
+  - name: Subscription api
+    description: subscription api for adidas
+paths:
+  /api/subscription:
+    get:
+      tags:
+        - Subscription api
+      summary: >-
+        creaate a new subscription for given informations as email, firstname, geneder, dateofbirth, consent, newsletterId.
+      operationId: newSubscription
+     
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionRequest'
+
+components:
+  schemas:
+      SubscriptionResponse:
+        properties:
+          subscriptionId:
+            type: integer
+            format: int64
+          subscriptionDto:
+            type: object
+            $ref: '#/components/schemas/SubscriptionDto'
+      SubscriptionRequest:
+        properties:
+          subscriptionDto:
+            type: object
+            $ref: '#/components/schemas/SubscriptionDto'
+      SubscriptionDto:
+        properties:
+          email:
+            type: string
+          firstName:
+            type: string
+          gender:
+            type: string
+          dateOfBirth:
+            type: string
+          consent:
+            type: boolean
+          newsletterId:
+            type: integer
