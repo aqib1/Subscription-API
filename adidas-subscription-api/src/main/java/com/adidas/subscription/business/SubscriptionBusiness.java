@@ -2,16 +2,21 @@ package com.adidas.subscription.business;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import com.adidas.subscription.constant.Helper;
 import com.adidas.subscription.exceptions.InvalidRequestException;
+import com.adidas.subscription.service.SubscriptionService;
 import com.example.model.SubscriptionRequest;
 import com.example.model.SubscriptionResponse;
 
 @Component
 public class SubscriptionBusiness {
+	
 	private Logger logger = LoggerFactory.getLogger(SubscriptionBusiness.class);
+	
+	@Autowired
+	private SubscriptionService service;
 
 	public SubscriptionResponse newSubscription(SubscriptionRequest request) {
 		logger.info("validating request ["+request+"]");

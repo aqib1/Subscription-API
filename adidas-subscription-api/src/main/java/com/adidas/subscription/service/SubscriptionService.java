@@ -1,9 +1,18 @@
 package com.adidas.subscription.service;
 
-import com.example.model.SubscriptionRequest;
-import com.example.model.SubscriptionResponse;
+import java.util.List;
+
+import com.adidas.subscription.entities.SubscriptionEntity;
 
 public interface SubscriptionService {
 
-	SubscriptionResponse newSubscription(SubscriptionRequest request);
+	SubscriptionEntity newSubscription(SubscriptionEntity request);
+
+	SubscriptionEntity getSubscriptionByEmail(String email);
+
+	List<SubscriptionEntity> getAllSubscription();
+
+	void delete(SubscriptionEntity entity);
+	
+	void deleteAll();
 }
