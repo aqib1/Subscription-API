@@ -5,6 +5,9 @@ public class Consts {
 	public static final String SUBSCRIPTION_COMPONENT_SCAN_PATH = "com.adidas.subscription";
 	public static final String SUBSCRIPTION_REPOSITERIES_PATH = "com.adidas.subscription.repositeries";
 	
+	/*****************URLS************/
+	public static final String URL_SUBSCRIPTION_MAIN = "/subscription";
+	
 	/***************** SUBSCRIPTION_TABLE DETAILS *********************/
 	public static final String SUBSCRIPTION_ENTITY_TABLE_NAME = "SUBSCRIPTION_TABLE";
 	public static final String SUBSCRIPTION_ENTITY_COL_FIRST_NAME = "FIRST_NAME";
