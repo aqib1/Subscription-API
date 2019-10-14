@@ -8,8 +8,6 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(SUBSCRIPTION_COMPONENT_SCAN_PATH)
-//@EntityScan(SUBSCRIPTION_ENTITIES_PATH)
-//@EnableJpaRepositories(basePackages = SUBSCRIPTION_REPOSITERIES_PATH)
 public class AdidasSubscriptionApiApplication {
 
 	public static void main(String[] args) {

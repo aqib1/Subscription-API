@@ -5,6 +5,8 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+import javax.transaction.Transactional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,12 +79,13 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	}
 
 	@Override
-	public void delete(SubscriptionEntity entity) {
+	@Transactional
+	public void delete(String email) {
 		writeLock.lock();
 		logger.info("Acquire write lock...");
 		try {
 			logger.debug("delete subscription");
-			repository.delete(entity);
+			repository.deleteOneByEmail(email);
 		} catch (Exception e) {
 			throw new BadInternalServerException(e.getMessage(), e);
 		} finally {
@@ -92,6 +95,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	}
 
 	@Override
+	@Transactional
 	public void deleteAll() {
 		writeLock.lock();
 		logger.info("Acquire write lock...");

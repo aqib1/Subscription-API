@@ -8,6 +8,10 @@ public class Consts {
 	
 	/*****************URLS************/
 	public static final String URL_SUBSCRIPTION_MAIN = "/subscription";
+	public static final String URL_SUBSCRIPTION_GET_BY_EMAIL = "/{email}";
+	public static final String URL_SUBSCRIPTION_DELETE_BY_EMAIL = "/{email}";
+	public static final String URL_SUBSCRIPTION_GET_ALL = "/all";
+	public static final String URL_SUBSCRIPTION_DELETE_ALL = "/all";
 	
 	/***************** SUBSCRIPTION_TABLE DETAILS *********************/
 	public static final String SUBSCRIPTION_ENTITY_TABLE_NAME = "SUBSCRIPTION_TABLE";

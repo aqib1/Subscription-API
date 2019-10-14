@@ -1,5 +1,7 @@
 package com.adidas.subscription.business;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import com.adidas.subscription.entities.SubscriptionEntity;
 import com.adidas.subscription.exceptions.InvalidRequestException;
 import com.adidas.subscription.mapper.SubscriptionMapper;
 import com.adidas.subscription.service.Impl.SubscriptionServiceImpl;
+import com.example.model.SubscriptionDetailedResponse;
 import com.example.model.SubscriptionRequest;
 import com.example.model.SubscriptionResponse;
 
@@ -30,9 +33,38 @@ public class SubscriptionBusiness {
 		logger.info("Saving new subscription in database");
 		SubscriptionEntity entity = service
 				.newSubscription(mapper.subscriptionEntityFromSubscriptionDto(request.getSubscriptionDto()));
-		logger.debug("New entity ["+entity+"] Recieved");
+		logger.debug("New entity [" + entity + "] Recieved");
 		return new SubscriptionResponse().subscriptionId(entity.getId())
 				.subscriptionDto(mapper.subscriptionDtoFromSubscriptionEntity(entity));
+	}
+
+	public SubscriptionResponse getSubscriptionByEmail(String email) {
+		if (Helper.isNullOrEmptyString(email)) {
+			throw new InvalidRequestException("Email for subscription can not be null or empty");
+		}
+		logger.debug("Get subscription against email [" + email + "]");
+		SubscriptionEntity entity = service.getSubscriptionByEmail(email);
+		logger.debug("New entity [" + entity + "] Recieved");
+		return new SubscriptionResponse().subscriptionId(entity.getId())
+				.subscriptionDto(mapper.subscriptionDtoFromSubscriptionEntity(entity));
+	}
+
+	public SubscriptionDetailedResponse getAllSubscriptions() {
+		logger.info("Get all subscriptions");
+		List<SubscriptionEntity> entities = service.getAllSubscription();
+		logger.debug("Subscriptions recieved [" + entities + "]");
+		return new SubscriptionDetailedResponse().count(entities.size())
+				.subscriptionsList(mapper.subscriptionDtoListFromSubscriptionEntityList(entities));
+	}
+
+	public void deleteByEmail(String email) {
+		logger.debug("Delete by email [" + email + "]");
+		service.delete(email);
+	}
+
+	public void deleteAll() {
+		logger.info("Deleting all subscriptions");
+		service.deleteAll();
 	}
 
 	private void validateSubscriptionRequest(SubscriptionRequest request) {

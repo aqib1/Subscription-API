@@ -7,4 +7,6 @@ import com.adidas.subscription.entities.SubscriptionEntity;
 public interface SubscriptionRepository extends JpaRepository<SubscriptionEntity, Long> {
 
 	public SubscriptionEntity findOneByEmail(String email);
+
+	public void deleteOneByEmail(String email);
 }

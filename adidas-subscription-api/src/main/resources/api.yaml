@@ -7,24 +7,71 @@ tags:
   - name: Subscription api
     description: subscription api for adidas
 paths:
-  /api/subscription:
-    get:
+  /subscription:
+    post:
       tags:
         - Subscription api
       summary: >-
         creaate a new subscription for given informations as email, firstname, geneder, dateofbirth, consent, newsletterId.
       operationId: newSubscription
-     
+      requestBody:
+        description: request body required for creation of new subscriptions
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionRequest'
       responses:
         '200':
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubscriptionRequest'
+                $ref: '#/components/schemas/SubscriptionResponse'
+    get:
+      tags:
+        - Subscription api
+      summary: >-
+        get a subscription over given email
+      operationId: getSubscription
+      parameters:
+        - in: path
+          name: email
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResponse'
+  /subscription/all:  
+    get:
+      tags:
+        - Subscription api
+      summary: >-
+        get all subscriptions
+      operationId: getAllSubscription
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetailedResponse'            
 
 components:
   schemas:
+      SubscriptionDetailedResponse:
+        properties:
+          count:
+            type: integer
+          subscriptionsList:
+            type: array
+            items:
+              type: object
+              $ref: '#/components/schemas/SubscriptionDto'
       SubscriptionResponse:
         properties:
           subscriptionId:
@@ -63,4 +110,4 @@ components:
           exceptionName:
             type: string
           createdAt:
-            type: string    
+            type: string

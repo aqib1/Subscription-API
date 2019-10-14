@@ -12,7 +12,7 @@ public interface SubscriptionService {
 
 	List<SubscriptionEntity> getAllSubscription();
 
-	void delete(SubscriptionEntity entity);
+	void delete(String email);
 	
 	void deleteAll();
 }
