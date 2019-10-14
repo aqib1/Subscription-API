@@ -3,3 +3,8 @@ adidas-subscription-api/mvnw
 adidas-subscription-api/mvnw.cmd
 adidas-subscription-api/.mvn/
 RemoteSystemsTempFiles/.project
+/.recommenders/
+EurekaServer/.classpath
+EurekaServer/.project
+EurekaServer/.settings/
+EurekaServer/target/
