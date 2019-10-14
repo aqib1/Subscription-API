@@ -4,11 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import com.adidas.subscription.constant.Helper;
 import com.adidas.subscription.entities.SubscriptionEntity;
 import com.adidas.subscription.exceptions.InvalidRequestException;
 import com.adidas.subscription.mapper.SubscriptionMapper;
-import com.adidas.subscription.service.SubscriptionService;
+import com.adidas.subscription.service.Impl.SubscriptionServiceImpl;
 import com.example.model.SubscriptionRequest;
 import com.example.model.SubscriptionResponse;
 
@@ -18,7 +19,7 @@ public class SubscriptionBusiness {
 	private Logger logger = LoggerFactory.getLogger(SubscriptionBusiness.class);
 
 	@Autowired
-	private SubscriptionService service;
+	private SubscriptionServiceImpl service;
 
 	@Autowired
 	private SubscriptionMapper mapper;
@@ -29,6 +30,7 @@ public class SubscriptionBusiness {
 		logger.info("Saving new subscription in database");
 		SubscriptionEntity entity = service
 				.newSubscription(mapper.subscriptionEntityFromSubscriptionDto(request.getSubscriptionDto()));
+		logger.debug("New entity ["+entity+"] Recieved");
 		return new SubscriptionResponse().subscriptionId(entity.getId())
 				.subscriptionDto(mapper.subscriptionDtoFromSubscriptionEntity(entity));
 	}

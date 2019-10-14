@@ -14,7 +14,7 @@ import com.adidas.subscription.constant.Helper;
 import com.adidas.subscription.entities.SubscriptionEntity;
 import com.adidas.subscription.exceptions.BadInternalServerException;
 import com.adidas.subscription.exceptions.DublicateDataException;
-import com.adidas.subscription.repositeries.SubscriptionRepository;
+import com.adidas.subscription.repository.SubscriptionRepository;
 import com.adidas.subscription.service.SubscriptionService;
 
 @Service
@@ -53,6 +53,8 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		try {
 			logger.debug("find subscription against email [" + email + "]");
 			return repository.findOneByEmail(email);
+		} catch (Exception e) {
+			throw new BadInternalServerException(e.getMessage(), e);
 		} finally {
 			logger.info("Release read lock...");
 			readLock.unlock();
@@ -66,6 +68,8 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		try {
 			logger.debug("find all subscriptions");
 			return repository.findAll();
+		} catch (Exception e) {
+			throw new BadInternalServerException(e.getMessage(), e);
 		} finally {
 			logger.info("Release read lock...");
 			readLock.unlock();
@@ -101,5 +105,4 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 			writeLock.unlock();
 		}
 	}
-
 }

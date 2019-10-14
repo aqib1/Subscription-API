@@ -1,4 +1,4 @@
-package com.adidas.subscription.repositeries;
+package com.adidas.subscription.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

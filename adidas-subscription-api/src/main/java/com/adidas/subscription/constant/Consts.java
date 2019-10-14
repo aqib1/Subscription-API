@@ -3,7 +3,8 @@ package com.adidas.subscription.constant;
 public class Consts {
 	
 	public static final String SUBSCRIPTION_COMPONENT_SCAN_PATH = "com.adidas.subscription";
-	public static final String SUBSCRIPTION_REPOSITERIES_PATH = "com.adidas.subscription.repositeries";
+	public static final String SUBSCRIPTION_REPOSITERIES_PATH = "com.adidas.subscription.repository";
+	public static final String SUBSCRIPTION_ENTITIES_PATH = "com.adidas.subscription.entities";
 	
 	/*****************URLS************/
 	public static final String URL_SUBSCRIPTION_MAIN = "/subscription";
