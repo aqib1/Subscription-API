@@ -27,6 +27,10 @@ public class SessionFactory {
 		}
 		return this;
 	}
+	
+	public Session getSession() {
+		return session;
+	}
 
 	public static SessionFactory getInstance() {
 		if (Helper.isNull(sessionFactory)) {

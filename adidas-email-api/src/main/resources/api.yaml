@@ -46,3 +46,10 @@ components:
             type: string
           success: 
             type: boolean
+      MimeMessagesTypes:
+        type: string
+        enum:
+          - SIMPLE
+          - TEXT
+          - HTML_TEXT
+          - ATTACHMENTS      
