@@ -37,6 +37,7 @@ paths:
       parameters:
         - in: path
           name: email
+          required: true
           schema:
             type: string
       responses:
@@ -46,6 +47,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SubscriptionResponse'
+    delete:
+      tags:
+        - Subscription api
+      summary: >-
+        delete a subscription over given email
+      operationId: deleteByEmail
+      parameters:
+        - in: path
+          name: email
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+                
   /subscription/all:  
     get:
       tags:
@@ -59,7 +76,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubscriptionDetailedResponse'            
+                $ref: '#/components/schemas/SubscriptionDetailedResponse' 
+    delete:
+      tags:
+        - Subscription api
+      summary: >-
+        delete all subscription 
+      operationId: deleteAll
+      responses:
+        '200':
+          description: Success            
 
 components:
   schemas:

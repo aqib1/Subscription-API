@@ -1,0 +1,48 @@
+openapi: 3.0.0
+info:
+  description: API for adidas-subscription-api
+  version: "1.0.0-oas3"
+  title: Email API 
+tags:
+  - name: Email api
+    description: Email api for adidas
+paths:
+  /email:
+    post:
+      tags:
+        - Email api
+      summary: >-
+        creaate a new email service request, against, sender, reciever, and newsletterId.
+      operationId: newEmailRequest
+      requestBody:
+        description: request body required for creation of new email request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailResponse'
+components:
+  schemas:
+      EmailRequest:
+        properties:
+          senderEmail:
+            type: string
+          recieverEmail:
+            type: string
+          newsletterId:
+            type: integer
+      EmailResponse:
+        properties:
+          message: 
+            type: string
+          timestamp:
+            type: string
+          success: 
+            type: boolean
