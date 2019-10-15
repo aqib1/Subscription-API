@@ -8,3 +8,6 @@ EurekaServer/.classpath
 EurekaServer/.project
 EurekaServer/.settings/
 EurekaServer/target/
+adidas-email-api/mvnw
+adidas-email-api/mvnw.cmd
+adidas-email-api/.mvn/

@@ -39,9 +39,7 @@ public class SubscriptionBusiness {
 	}
 
 	public SubscriptionResponse getSubscriptionByEmail(String email) {
-		if (Helper.isNullOrEmptyString(email)) {
-			throw new InvalidRequestException("Email for subscription can not be null or empty");
-		}
+		validateEmail(email);
 		logger.debug("Get subscription against email [" + email + "]");
 		SubscriptionEntity entity = service.getSubscriptionByEmail(email);
 		logger.debug("New entity [" + entity + "] Recieved");
@@ -58,6 +56,7 @@ public class SubscriptionBusiness {
 	}
 
 	public void deleteByEmail(String email) {
+		validateEmail(email);
 		logger.debug("Delete by email [" + email + "]");
 		service.delete(email);
 	}
@@ -74,9 +73,6 @@ public class SubscriptionBusiness {
 		if (Helper.isNull(request.getSubscriptionDto())) {
 			throw new InvalidRequestException("Request [subscription dto] can't be null");
 		}
-		if (Helper.isNullOrEmptyString(request.getSubscriptionDto().getEmail())) {
-			throw new InvalidRequestException("Email for subscription can not be null or empty");
-		}
 		if (Helper.isNullOrEmptyString(request.getSubscriptionDto().getDateOfBirth())) {
 			throw new InvalidRequestException("Date of birth can not be null or empty");
 		}
@@ -85,6 +81,16 @@ public class SubscriptionBusiness {
 		}
 		if (Helper.isNull(request.getSubscriptionDto().getNewsletterId())) {
 			throw new InvalidRequestException("Newsletter Id can not be null");
+		}
+		validateEmail(request.getSubscriptionDto().getEmail());
+	}
+
+	private void validateEmail(String email) {
+		if (Helper.isNullOrEmptyString(email)) {
+			throw new InvalidRequestException("Email for subscription can not be null or empty");
+		}
+		if (!Helper.isEmailValid(email)) {
+			throw new InvalidRequestException("Email is not present in valid format");
 		}
 	}
 }

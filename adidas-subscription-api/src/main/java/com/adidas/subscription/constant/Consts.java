@@ -22,6 +22,9 @@ public class Consts {
 	public static final String SUBSCRIPTION_ENTITY_COL_NEWS_LETTER_ID = "NEWSLETTER_ID";
 	public static final String SUBSCRIPTION_ENTITY_COL_EMAIL = "Email";
 	
+	/***********************REGEX*******************/
+	public static final String EMAIL_REGEX = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+	
 	private Consts() {
 
 	}
