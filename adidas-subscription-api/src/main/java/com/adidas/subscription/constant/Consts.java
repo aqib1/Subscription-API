@@ -2,6 +2,7 @@ package com.adidas.subscription.constant;
 
 public class Consts {
 	
+	/**********************Scan Packages**********************/
 	public static final String SUBSCRIPTION_COMPONENT_SCAN_PATH = "com.adidas.subscription";
 	public static final String SUBSCRIPTION_REPOSITERIES_PATH = "com.adidas.subscription.repository";
 	public static final String SUBSCRIPTION_ENTITIES_PATH = "com.adidas.subscription.entities";
