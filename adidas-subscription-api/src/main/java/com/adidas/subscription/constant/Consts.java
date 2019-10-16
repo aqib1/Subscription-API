@@ -13,6 +13,7 @@ public class Consts {
 	public static final String URL_SUBSCRIPTION_DELETE_BY_EMAIL = "/{email}";
 	public static final String URL_SUBSCRIPTION_GET_ALL = "/all";
 	public static final String URL_SUBSCRIPTION_DELETE_ALL = "/all";
+	public static final String URL_EMAIL_SENDER = "/email";
 	
 	/***************** SUBSCRIPTION_TABLE DETAILS *********************/
 	public static final String SUBSCRIPTION_ENTITY_TABLE_NAME = "SUBSCRIPTION_TABLE";
@@ -22,6 +23,13 @@ public class Consts {
 	public static final String SUBSCRIPTION_ENTITY_COL_CONSENT = "CONSENT";
 	public static final String SUBSCRIPTION_ENTITY_COL_NEWS_LETTER_ID = "NEWSLETTER_ID";
 	public static final String SUBSCRIPTION_ENTITY_COL_EMAIL = "Email";
+	
+	/******************* Email Account Details **************************/
+	public static final String SENDER_EMAIL_ACCOUNT = "aqibbutt3078@gmail.com";
+	public static final String SENDER_EMAIL_PASSWORD = "aqibbutt23136$$$";
+	public static final String SENDER_EMAIL_MESSAGE_TEMPLATE = "Email sending against newsletter => ";
+	public static final String SENDER_EMAIL_SUBJECT = "EMAIL - Newsletter";
+	public static final String SENDER_EMAIL_NAME = "AQIB - JAVED";
 	
 	/***********************REGEX*******************/
 	public static final String EMAIL_REGEX = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";

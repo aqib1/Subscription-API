@@ -13,6 +13,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import com.adidas.subscription.exceptions.BadInternalServerException;
 import com.adidas.subscription.exceptions.DublicateDataException;
+import com.adidas.subscription.exceptions.EmailFailoverException;
 import com.adidas.subscription.exceptions.InvalidRequestException;
 import com.adidas.subscription.exceptions.InvalidResponseException;
 import com.example.model.ResponseError;
@@ -83,5 +84,21 @@ public class ExceptionsAdvice {
 				.exceptionName(BadInternalServerException.class.getName()).errorMessage(e.getMessage());
 		logger.error(errorResponse.toString(), e);
 		return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+	}
+
+	/**
+	 * @param e
+	 * @param wr
+	 * @return
+	 */
+	@ExceptionHandler(value = { EmailFailoverException.class })
+	public ResponseEntity<ResponseError> handleEmailFailoverException(RuntimeException e, WebRequest wr) {
+		String error = Optional.of(e.getMessage()).orElse(e.getClass().getName())
+				+ " [Email failover exception! => (EmailFailoverException)]";
+		ResponseError errorResponse = new ResponseError().createdAt(LocalDateTime.now().toString())
+				.detailedMessage(error).errorCode(HttpStatus.EXPECTATION_FAILED.value())
+				.exceptionName(EmailFailoverException.class.getName()).errorMessage(e.getMessage());
+		logger.error(errorResponse.toString(), e);
+		return new ResponseEntity<>(errorResponse, HttpStatus.EXPECTATION_FAILED);
 	}
 }

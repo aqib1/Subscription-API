@@ -103,6 +103,8 @@ components:
           subscriptionId:
             type: integer
             format: int64
+          emailSent:
+            type: boolean  
           subscriptionDto:
             type: object
             $ref: '#/components/schemas/SubscriptionDto'
@@ -137,3 +139,28 @@ components:
             type: string
           createdAt:
             type: string
+      EmailResponse:
+        properties:
+          message: 
+            type: string
+          timestamp:
+            type: string
+          success: 
+            type: boolean
+      EmailRequest:
+        properties:
+          senderEmail:
+            type: string
+          senderEmailPassword:
+            type: string  
+          recieverEmail:
+            type: string
+          senderName:
+            type: string  
+          subject:
+            type: string
+          message:
+            type: string    
+          newsletterId:
+            type: integer
+            format: int64          
