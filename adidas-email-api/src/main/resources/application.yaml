@@ -1,6 +1,6 @@
 spring:
   application:
-    name: adidas-subscription-api
+    name: adidas-email-api
 server:
   port: 8081
 eureka:

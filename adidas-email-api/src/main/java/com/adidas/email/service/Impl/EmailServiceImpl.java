@@ -10,8 +10,11 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.adidas.email.business.EmailBusiness;
 import com.adidas.email.exceptions.BadInternalServerException;
 import com.adidas.email.factory.MimeMessageFactory;
 import com.adidas.email.service.EmailService;
@@ -21,10 +24,12 @@ import com.example.model.MimeMessagesTypes;
 
 @Service
 public class EmailServiceImpl implements EmailService {
+	private Logger logger = LoggerFactory.getLogger(EmailBusiness.class);
 
 	@Override
 	public EmailResponse sendEmail(EmailRequest emailRequest) throws BadInternalServerException {
 		try {
+			logger.debug("Creating MimeMessage against email request -> " + emailRequest);
 			MimeMessage mimeMessage = MimeMessageFactory.getInstance().getMimeMessage(MimeMessagesTypes.HTML_TEXT,
 					emailRequest);
 			mimeMessage.setFrom(new InternetAddress(emailRequest.getSenderEmail(), emailRequest.getSenderName()));

@@ -1,19 +1,18 @@
 package com.adidas.email.constant;
 
 public class Consts {
-	
-	/**********************Scan Packages**********************/
+
+	/********************** Scan Packages **********************/
 	public static final String SUBSCRIPTION_COMPONENT_SCAN_PATH = "com.adidas.email";
-	
-	/*************************URLS**************************/
+
+	/************************* URLS **************************/
 	public static final String URL_EMAIL_SENDER = "/email";
-	
-	
-	/***********************Properties for JavaMail Service***************/
+
+	/*********************** Properties for JavaMail Service ***************/
 	public static final String KEY_SMTP_HOST = "mail.smtp.host";
 	public static final String KEY_SMTP_PORT = "mail.smtp.port";
 	public static final String KEY_MAIL_DEBUG = "mail.debug";
-	public static final String VALUE_MAIL_DEBUG = "true"; 
+	public static final String VALUE_MAIL_DEBUG = "true";
 	public static final String KEY_SMTP_STARTTLS = "mail.smtp.starttls.enable";
 	public static final String VALUE_SMTP_STARTTLS = "true";
 	public static final String VALUE_SMTP_PORT = "587";
@@ -25,10 +24,16 @@ public class Consts {
 	public static final String KEY_CONTENT_TRANSFER_ENCODING = "Content-Transfer-Encoding";
 	public static final String _8_BIT = "8bit";
 	public static final String UTF_8 = "UTF_8";
-	
-	/***********************REGEX*******************/
+	public static final String KEY_MAIL_MAIL_SMTPS_SSL_ENABLE = "mail.smtps.ssl.enable";
+	public static final String VALUE_MAIL_MAIL_SMTPS_SSL_ENABLE = "true";
+	public static final String KEY_MAIL_STMPS_AUTH = "mail.smtps.auth";
+	public static final String VALUE_MAIL_STMPS_AUTH = "true";
+	public static final String KEY_MAIL_SMTP_USER = "mail.smtp.user";
+	public static final String KEY_SMTP_PASSORD = "mail.smtp.password";
+
+	/*********************** REGEX *******************/
 	public static final String EMAIL_REGEX = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
-	
+
 	private Consts() {
 
 	}

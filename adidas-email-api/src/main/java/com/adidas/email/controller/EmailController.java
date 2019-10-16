@@ -1,5 +1,7 @@
 package com.adidas.email.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,11 +18,14 @@ import com.example.model.EmailResponse;
 @RequestMapping(Consts.URL_EMAIL_SENDER)
 public class EmailController {
 
+	private Logger logger = LoggerFactory.getLogger(EmailController.class);
+
 	@Autowired
 	private EmailBusiness emailBusiness;
 
 	@PostMapping
 	public ResponseEntity<EmailResponse> newEmailRequest(@RequestBody EmailRequest request) {
+		logger.info("Email request recieved -> "+request);
 		return ResponseEntity.ok().body(emailBusiness.newEmailRequest(request));
 	}
 }

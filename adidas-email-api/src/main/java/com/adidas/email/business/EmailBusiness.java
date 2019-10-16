@@ -1,5 +1,7 @@
 package com.adidas.email.business;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,11 +14,15 @@ import com.example.model.EmailResponse;
 @Component
 public class EmailBusiness {
 
+	private Logger logger = LoggerFactory.getLogger(EmailBusiness.class);
+	
 	@Autowired
 	private EmailService emailService;
 	
 	public EmailResponse newEmailRequest(EmailRequest request) {
+		logger.info("Validating request");
 		validateEmailRequest(request);
+		logger.info("Sending request to send email");
 		return emailService.sendEmail(request);
 	}
 

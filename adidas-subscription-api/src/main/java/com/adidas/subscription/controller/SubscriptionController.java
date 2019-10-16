@@ -1,5 +1,6 @@
 package com.adidas.subscription.controller;
 
+import static com.adidas.subscription.constant.Consts.TRUE;
 import static com.adidas.subscription.constant.Consts.URL_SUBSCRIPTION_DELETE_ALL;
 import static com.adidas.subscription.constant.Consts.URL_SUBSCRIPTION_DELETE_BY_EMAIL;
 import static com.adidas.subscription.constant.Consts.URL_SUBSCRIPTION_GET_ALL;
@@ -48,7 +49,7 @@ public class SubscriptionController {
 		logger.debug("Sender email against request -> " + request);
 		try {
 			if (emailBusiness.sendEmail(eRequest)) {
-				response.emailSent(true);
+				response.emailSent(TRUE);
 				logger.info("email sent successfully...");
 			}
 		} catch (EmailFailoverException e) {
