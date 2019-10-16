@@ -5,6 +5,7 @@ import javax.mail.internet.MimeMessage;
 
 import com.adidas.email.constant.Consts;
 import com.adidas.email.constant.Helper;
+import com.example.model.EmailRequest;
 import com.example.model.MimeMessagesTypes;
 
 public class MimeMessageFactory {
@@ -15,11 +16,11 @@ public class MimeMessageFactory {
 
 	}
 
-	public MimeMessage getMimeMessage(MimeMessagesTypes type) throws MessagingException {
+	public MimeMessage getMimeMessage(MimeMessagesTypes type, EmailRequest request) throws MessagingException {
 		MimeMessage mimeMessage = null;
 		switch (type) {
 		case HTML_TEXT:
-			mimeMessage = getHtmlTextMimeMessage();
+			mimeMessage = getHtmlTextMimeMessage(request);
 			break;
 		default:
 			break;
@@ -27,8 +28,8 @@ public class MimeMessageFactory {
 		return mimeMessage;
 	}
 
-	private MimeMessage getHtmlTextMimeMessage() throws MessagingException {
-		MimeMessage message = new MimeMessage(SessionFactory.getInstance().initSession().getSession());
+	private MimeMessage getHtmlTextMimeMessage(EmailRequest request) throws MessagingException {
+		MimeMessage message = new MimeMessage(SessionFactory.getInstance().initSession(request).getSession());
 		message.addHeader(Consts.KEY_CONTENT_TYPE, Consts.VALUE_HTML_TEXT_TYPE);
 		message.addHeader(Consts.KEY_FORMAT, Consts.VALUE_FORMAT);
 		message.addHeader(Consts.KEY_CONTENT_TRANSFER_ENCODING, Consts._8_BIT);
