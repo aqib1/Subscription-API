@@ -12,7 +12,6 @@ import javax.mail.internet.MimeMessage;
 
 import org.springframework.stereotype.Service;
 
-import com.adidas.email.constant.Consts;
 import com.adidas.email.exceptions.BadInternalServerException;
 import com.adidas.email.factory.MimeMessageFactory;
 import com.adidas.email.service.EmailService;
@@ -30,12 +29,12 @@ public class EmailServiceImpl implements EmailService {
 					emailRequest);
 			mimeMessage.setFrom(new InternetAddress(emailRequest.getSenderEmail(), emailRequest.getSenderName()));
 			mimeMessage.setReplyTo(InternetAddress.parse(emailRequest.getRecieverEmail(), false));
-			mimeMessage.setSubject(emailRequest.getSubject(), Consts.UTF_8);
-			mimeMessage.setText(emailRequest.getMessage(), Consts.UTF_8);
+			mimeMessage.setSubject(emailRequest.getSubject());
+			mimeMessage.setText(emailRequest.getMessage());
 			mimeMessage.setSentDate(new Date());
 			mimeMessage.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse(emailRequest.getRecieverEmail(), false));
-			Transport.send(mimeMessage);
+			Transport.send(mimeMessage, emailRequest.getSenderEmail(), emailRequest.getSenderEmailPassword());
 
 		} catch (MessagingException | UnsupportedEncodingException e) {
 			throw new BadInternalServerException(e.getMessage(), e);

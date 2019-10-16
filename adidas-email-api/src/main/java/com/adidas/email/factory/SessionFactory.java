@@ -28,6 +28,10 @@ public class SessionFactory {
 				properties.setProperty(Consts.KEY_SMTP_PORT, Consts.VALUE_SMTP_PORT);
 				properties.put(Consts.KEY_SMTP_STARTTLS, Consts.VALUE_SMTP_STARTTLS);
 				properties.setProperty(Consts.KEY_MAIL_DEBUG, Consts.VALUE_MAIL_DEBUG);
+				properties.setProperty("mail.smtps.ssl.enable", "true");
+				properties.setProperty("mail.smtps.auth", "true"); 
+				properties.setProperty("mail.smtp.user", emailRequest.getSenderEmail());
+				properties.setProperty("mail.smtp.password", emailRequest.getSenderEmailPassword());
 				Authenticator authenticator = new Authenticator() {
 					
 					@Override
