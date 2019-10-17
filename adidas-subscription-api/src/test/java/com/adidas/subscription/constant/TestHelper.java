@@ -64,7 +64,19 @@ public class TestHelper {
 		subscriptionEntity.setGender("M");
 		return subscriptionEntity;
 	}
-
+	
+	public SubscriptionEntity subscriptionEntity1() {
+		SubscriptionEntity subscriptionEntity = new SubscriptionEntity();
+		subscriptionEntity.setId(1L);
+		subscriptionEntity.setFirstName("Fname");
+		subscriptionEntity.setConsent(true);
+		subscriptionEntity.setDateOfBirth("1/1/2019");
+		subscriptionEntity.setNewsletterId(1);
+		subscriptionEntity.setEmail("temp@gmail.com");
+		subscriptionEntity.setGender("M");
+		return subscriptionEntity;
+	}
+	
 	public SubscriptionDto subscriptionDto() {
 		return new SubscriptionDto().firstName("Fname").dateOfBirth("1/1/2019").consent(true).email("test@gmail.com")
 				.newsletterId(1).gender("M");
