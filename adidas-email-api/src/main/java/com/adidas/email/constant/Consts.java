@@ -3,7 +3,7 @@ package com.adidas.email.constant;
 public class Consts {
 
 	/********************** Scan Packages **********************/
-	public static final String SUBSCRIPTION_COMPONENT_SCAN_PATH = "com.adidas.email";
+	public static final String EMAIL_COMPONENT_SCAN_PATH = "com.adidas.email";
 
 	/************************* URLS **************************/
 	public static final String URL_EMAIL_SENDER = "/email";
