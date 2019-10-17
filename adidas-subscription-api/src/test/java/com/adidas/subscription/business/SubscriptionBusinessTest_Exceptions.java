@@ -11,7 +11,7 @@ import com.adidas.subscription.exceptions.InvalidRequestException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SubscriptionBusinessTest {
+public class SubscriptionBusinessTest_Exceptions {
 
 	@Autowired
 	private SubscriptionBusiness business;
