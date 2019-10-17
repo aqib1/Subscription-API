@@ -3,6 +3,8 @@ package com.adidas.subscription.constant;
 import java.util.Objects;
 
 import com.adidas.subscription.entities.SubscriptionEntity;
+import com.example.model.EmailRequest;
+import com.example.model.EmailResponse;
 import com.example.model.SubscriptionDto;
 import com.example.model.SubscriptionRequest;
 import com.example.model.SubscriptionResponse;
@@ -16,6 +18,39 @@ public class TestHelper {
 
 	public SubscriptionResponse subscriptionResponse() {
 		return new SubscriptionResponse().emailSent(true).subscriptionDto(subscriptionDto()).subscriptionId(1L);
+	}
+
+	public EmailRequest emailRequestNullRecieverEmail() {
+		return new EmailRequest().recieverEmail(null).senderEmail("test@email.com").newsletterId(1L)
+				.message("this is test email").subject("Test - Email");
+	}
+
+	public EmailRequest emailRequestNullSenderEmail() {
+		return new EmailRequest().recieverEmail("test@email.com").senderEmail(null).newsletterId(1L)
+				.message("this is test email").subject("Test - Email");
+	}
+
+	public EmailRequest emailRequestNullSubjectEmail() {
+		return new EmailRequest().recieverEmail("test@email.com").senderEmail(null).newsletterId(1L)
+				.message("this is test email").subject(null);
+	}
+
+	public EmailRequest emailRequestNullMessageEmail() {
+		return new EmailRequest().recieverEmail("test@email.com").senderEmail(null).newsletterId(1L).message(null)
+				.subject("Test - Email");
+	}
+
+	public EmailRequest emailRequest() {
+		return new EmailRequest().recieverEmail("test@email.com").senderEmail("test@email.com").newsletterId(1L)
+				.message("this is test email").subject("Test - Email");
+	}
+
+	public EmailResponse emailResponse() {
+		return new EmailResponse().message("Email sent Successfully").success(true).timestamp("1/2/1992");
+	}
+	
+	public EmailResponse emailResponseFail() {
+		return new EmailResponse().message("Email sent not Successfully").success(false).timestamp("1/2/1992");
 	}
 
 	public SubscriptionEntity subscriptionEntity() {
