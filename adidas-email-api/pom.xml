@@ -172,4 +172,27 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<!-- log configuration -->
+				<logback.loglevel>DEBUG</logback.loglevel>
+				<!-- default Spring profiles -->
+				<activeProfiles>dev</activeProfiles>
+			</properties>
+		</profile>
+		<profile>
+			<id>docker</id>
+			<properties>
+				<!-- log configuration -->
+				<logback.loglevel>DEBUG</logback.loglevel>
+				<!-- default Spring profiles -->
+				<activeProfiles>docker</activeProfiles>
+			</properties>
+		</profile>
+	</profiles>
 </project>

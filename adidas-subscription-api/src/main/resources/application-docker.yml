@@ -7,3 +7,5 @@ eureka:
       defaultZone: http://eureka-service:8889/eureka/
   instance:
     preferIpAddress: true
+server:
+  port: 8099 

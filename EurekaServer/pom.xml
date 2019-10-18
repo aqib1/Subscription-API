@@ -89,19 +89,41 @@
 							<include>${project.build.finalName}.jar</include>
 						</resource>
 					</resources>
-				<repository>aqibbutt3078/ccvatapi</repository>
-                 <tag>${project.version}</tag>
+					<repository>aqibbutt3078/ccvatapi</repository>
+					<tag>${project.version}</tag>
 				</configuration>
 				<executions>
-                 <execution>
-                     <id>default</id>
-                     <goals>
-                         <goal>build</goal>
-                     </goals>
-                 </execution>
-             </executions>
+					<execution>
+						<id>default</id>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
-
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<!-- log configuration -->
+				<logback.loglevel>DEBUG</logback.loglevel>
+				<!-- default Spring profiles -->
+				<activeProfiles>dev</activeProfiles>
+			</properties>
+		</profile>
+		<profile>
+			<id>docker</id>
+			<properties>
+				<!-- log configuration -->
+				<logback.loglevel>DEBUG</logback.loglevel>
+				<!-- default Spring profiles -->
+				<activeProfiles>docker</activeProfiles>
+			</properties>
+		</profile>
+	</profiles>
 </project>

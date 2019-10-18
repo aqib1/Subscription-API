@@ -1,0 +1,25 @@
+version: '2.2'
+services:
+    eureka-service:
+        image: eureka-server
+        environment:
+            - SERVER_PORT=8889
+        ports:
+            - 8081:8889
+        networks:
+            - mynet
+    mail-service:
+        image: mail-microservice
+        networks:
+            - mynet
+        environment:
+            - SERVER_PORT=8889
+    subscription-service:
+        image: subscription-microservice
+        networks:
+            - mynet
+        ports:
+            - 8080:8099
+networks:
+    mynet:
+        driver: bridge
