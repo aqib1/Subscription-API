@@ -46,12 +46,19 @@ The proccess is the same for the other services.
 Running the Subscription Service for develoment
 It is neccessary run the services following an order,
 
-Eureka Server, It is necessary wait to Eureka Serves are completly deployed before stating to run the rest of services.
-java -jar target/EurekaServer-0.0.1.jar
-Email Microservice
+- Eureka Server
+
+It is necessary wait to Eureka Serves are completly deployed before stating to run the rest of services.
+java -jar target/eureka-server-0.0.1.jar
+
+- Email Microservice
+
 java -jar target/adidas-email-api-0.0.1-SNAPSHOT.jar
-Subscription Microservice
+
+- Subscription Microservice
+
 java -jar target/adidas-subscription-api-0.0.1-SNAPSHOT.jar
+
 Using Subscription Service in development
 If you want to access to Eureka Server to see the registred services, http://localhost:8761 in your browser.
 
