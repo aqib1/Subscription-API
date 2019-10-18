@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>EruekaServer</groupId>
-	<artifactId>currency-converter</artifactId>
+	<artifactId>eureka-server</artifactId>
 	<version>0.0.1</version>
 	<name>EurekaServer</name>
 	<description>EurekaServer for currency converter</description>
