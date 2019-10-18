@@ -33,20 +33,15 @@ It is neccessary run the services following an order,
 Eureka Server, It is necessary wait to Eureka Serves are completly deployed before stating to run the rest of services.
 java -jar target/EurekaServer-0.0.1.jar
 Email Microservice
-java -jar target/EmailMicroservice-0.0.1.jar
-Event Microservice
-java -jar target/EventMicroservice-0.0.1.jar
+java -jar target/adidas-email-api-0.0.1-SNAPSHOT.jar
 Subscription Microservice
-java -jar target/SubscriptionMicroservice-0.0.1.jar
+java -jar target/adidas-subscription-api-0.0.1-SNAPSHOT.jar
 Using Subscription Service in development
-If you want to access to Eureka Server to see the registred services, http://localhost:8888 in your browser.
+If you want to access to Eureka Server to see the registred services, http://localhost:8761 in your browser.
 
-To do watch the API, http//localhost:8885/swagger-ui.html in your browser.
+To add a new Subscription, it is necessary to make a POST request to http://localhost:8083/subscription. 
 
-To add a new Subscription, it is necessary to make a POST request to http://localhost:8885/subscription/. It could be made using Curl,
-
-curl -i -H "Content-Type: application/json" -X POST -d '{"email":"prueba@email.com","fiirstName":"sergio","gender":"MALE","dateOfBith":"722818800000","consentFlag":"true","newSletterId":"1"}' http://localhost:8885/subscription/
-Using Docker
+# Using Docker
 You can dockerice the Subscription Service. To achieve this, first build a docker image of each of the service running the following command in the main folder of each service.
 
 mvn clean package -P docker docker:build
@@ -56,7 +51,4 @@ docker-compose -f app.yml up -d
 This command will create four docker container in which the three microservices and the Eureka Server will be executed. In addition, it will be create a internal docker network which to possible the communication among all cointainers. Finally, another cointainer is created which lie the PostgreSQL. Only the port 8080 of the container where will be executed the Subscription Microservice and the same port of the Eureka Server have been published to be reachable since a external network. So it is impossible that the database, the Email Microservice and the Event Microservice was reachable by other proccess that do not be the Subcription Microservice.
 
 To access to Eureka Server to see the registred services, http://localhost:8081
-
-To do watch the API, http//localhost:8885/swagger-ui.html in your browser.
-
-To add a new Subscription, it is necessary to make a POST request to http://localhost:8885/subscription/. It could be made using Curl,
+To add a new Subscription, it is necessary to make a POST request to http://localhost:8080/subscription
