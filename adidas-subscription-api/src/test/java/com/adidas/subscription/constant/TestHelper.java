@@ -1,10 +1,12 @@
 package com.adidas.subscription.constant;
 
+import java.util.Collections;
 import java.util.Objects;
 
 import com.adidas.subscription.entities.SubscriptionEntity;
 import com.example.model.EmailRequest;
 import com.example.model.EmailResponse;
+import com.example.model.SubscriptionDetailedResponse;
 import com.example.model.SubscriptionDto;
 import com.example.model.SubscriptionRequest;
 import com.example.model.SubscriptionResponse;
@@ -18,6 +20,11 @@ public class TestHelper {
 
 	public SubscriptionResponse subscriptionResponse() {
 		return new SubscriptionResponse().emailSent(true).subscriptionDto(subscriptionDto()).subscriptionId(1L);
+	}
+
+	public SubscriptionDetailedResponse subscriptionDetailsResponse() {
+		return new SubscriptionDetailedResponse().count(1)
+				.subscriptionsList(Collections.singletonList(subscriptionDto()));
 	}
 
 	public EmailRequest emailRequestNullRecieverEmail() {
@@ -48,7 +55,7 @@ public class TestHelper {
 	public EmailResponse emailResponse() {
 		return new EmailResponse().message("Email sent Successfully").success(true).timestamp("1/2/1992");
 	}
-	
+
 	public EmailResponse emailResponseFail() {
 		return new EmailResponse().message("Email sent not Successfully").success(false).timestamp("1/2/1992");
 	}
@@ -64,7 +71,7 @@ public class TestHelper {
 		subscriptionEntity.setGender("M");
 		return subscriptionEntity;
 	}
-	
+
 	public SubscriptionEntity subscriptionEntity1() {
 		SubscriptionEntity subscriptionEntity = new SubscriptionEntity();
 		subscriptionEntity.setId(1L);
@@ -76,7 +83,7 @@ public class TestHelper {
 		subscriptionEntity.setGender("M");
 		return subscriptionEntity;
 	}
-	
+
 	public SubscriptionDto subscriptionDto() {
 		return new SubscriptionDto().firstName("Fname").dateOfBirth("1/1/2019").consent(true).email("test@gmail.com")
 				.newsletterId(1).gender("M");
