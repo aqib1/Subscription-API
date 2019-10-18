@@ -1,0 +1,9 @@
+eureka:
+  client:
+    service-url: 
+      defaultZone: http://eureka-service:8889/eureka/
+  instance:
+    prefer-ip-address: true
+spring:
+  profiles:
+    active: docker
