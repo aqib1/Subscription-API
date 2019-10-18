@@ -3,17 +3,23 @@ The implementacion of Subscription Service has been made using a microservice ap
 
 In this development has been used the following technologies and libraries:
 
-Spring Cloud, it has been used to develop the architecture of microservices. It make possible the easy development of an Eureka Server and the registration of different services on it.
+- Spring Cloud
+it has been used to develop the architecture of microservices. It make possible the easy development of an Eureka Server and the registration of different services on it.
 
-Spring Boot, it makes it easy to create stand-alone application, which can be executed like without necessity of a application web server like tomcat.
+- Spring Boot 
+it makes it easy to create stand-alone application, which can be executed like without necessity of a application web server like tomcat.
 
-Spring Data JPA, to reduce the amount of boilerplate code rquired to implement data access for various persistence stores. In this case, during the development has been used H2 database.
+- Spring Data JPA
+to reduce the amount of boilerplate code rquired to implement data access for various persistence stores. In this case, during the development has been used H2 database.
 
-Swagger, to develop the API of the Subcription Microsevice.
+- Swagger
+to develop the API of the Subcription Microsevice.
 
-H2 database, it is the database used in the development proccess.
+- H2 database
+it is the database used in the development proccess.
 
-Spring AOP, is used for logging method inner outer statements
+- Spring AOP
+is used for logging method inner outer statements
 
 # Building for development
 To build the Subscription Service for development you must build the four services. To build the Subscription Microservice you must be in the SubscriptionMicroservice folder and run the following command,
