@@ -8,4 +8,4 @@ eureka:
   instance:
     preferIpAddress: true
 server:
-  port: 8099 
+  port: 8099
