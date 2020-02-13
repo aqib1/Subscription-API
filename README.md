@@ -26,7 +26,7 @@ is used for logging method inner outer statements
 is used to send real time emails
 
 - Junit 
-is used to do unit testing as application is buld using test-driven approach 
+is used to do unit testing as application is build using test-driven approach 
 
 - Mockito framework 
 is used to mock objects, services in unit testing
